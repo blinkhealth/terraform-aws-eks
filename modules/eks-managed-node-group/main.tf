@@ -286,13 +286,13 @@ resource "aws_eks_node_group" "this" {
   instance_types       = var.instance_types
   labels               = var.labels
 
-  dynamic "launch_template" {
-    for_each = local.use_custom_launch_template ? [1] : []
-    content {
-      name    = local.launch_template_name
-      version = local.launch_template_version
-    }
-  }
+  // dynamic "launch_template" {
+  //   for_each = local.use_custom_launch_template ? [1] : []
+  //   content {
+  //     name    = local.launch_template_name
+  //     version = local.launch_template_version
+  //   }
+  // }
 
   dynamic "remote_access" {
     for_each = length(var.remote_access) > 0 ? [var.remote_access] : []
